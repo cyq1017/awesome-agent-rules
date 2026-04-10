@@ -1,5 +1,7 @@
 # Awesome Agent Rules [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+**English** | [中文](README_zh.md)
+
 > A curated collection of rules, instructions, and best practices for AI coding agents.
 >
 > CLAUDE.md · AGENTS.md · .cursorrules · GEMINI.md — battle-tested patterns from real projects.
