@@ -262,9 +262,11 @@ Ready-to-use templates for different project types:
 | Project | Description |
 |---------|-------------|
 | [Conductor](https://github.com/cyq1017/conductor) | CLI framework for orchestrating multiple AI coding agents |
-| [OpenSpec](https://github.com/Fission-AI/OpenSpec) | Spec-Driven Development framework |
-| [Superpowers (ECC)](https://github.com/obra/superpowers) | Agent workflow enhancement skills |
 | [awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules) | Cursor-specific rules collection |
+| [OpenSpec](https://github.com/Fission-AI/OpenSpec) | Spec-Driven Development framework for AI agents |
+| [Superpowers (ECC)](https://github.com/obra/superpowers) | Agent workflow enhancement skills for Claude Code |
+| [AGENTS.md Spec](https://agents.md) | Official specification for the AGENTS.md cross-tool standard |
+| [claude-code (instructkr)](https://github.com/instructkr/claude-code) | Claude Code tips and CLAUDE.md examples |
 
 ---
 
