@@ -257,16 +257,99 @@ Ready-to-use templates for different project types:
 
 ---
 
-## Related Projects
+## Ecosystem & Resources
+
+### Awesome Lists & Collections
+
+| Project | Stars | Description |
+|---------|-------|-------------|
+| [awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules) | 15k+ | The original Cursor-specific rules collection |
+| [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | — | Skills, hooks, slash-commands, agent orchestrators for Claude Code |
+| [awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code) | — | Tools, IDE integrations, and frameworks |
+| [awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) | — | 100+ specialized subagents for Claude Code |
+
+### Agent Orchestration Frameworks
 
 | Project | Description |
 |---------|-------------|
-| [Conductor](https://github.com/cyq1017/conductor) | CLI framework for orchestrating multiple AI coding agents |
-| [awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules) | Cursor-specific rules collection |
+| [Conductor](https://github.com/cyq1017/conductor) | CLI for orchestrating multiple AI coding agents — structured handoff, trust calibration |
 | [OpenSpec](https://github.com/Fission-AI/OpenSpec) | Spec-Driven Development framework for AI agents |
 | [Superpowers (ECC)](https://github.com/obra/superpowers) | Agent workflow enhancement skills for Claude Code |
+
+### Specifications & Standards
+
+| Resource | Description |
+|----------|-------------|
 | [AGENTS.md Spec](https://agents.md) | Official specification for the AGENTS.md cross-tool standard |
-| [claude-code (instructkr)](https://github.com/instructkr/claude-code) | Claude Code tips and CLAUDE.md examples |
+| [Anthropic: CLAUDE.md Guide](https://docs.anthropic.com/en/docs/claude-code) | Official docs on how Claude Code reads CLAUDE.md |
+
+### Community Patterns (Sourced from Real Projects)
+
+These patterns appear repeatedly across successful AI-assisted projects:
+
+#### The "Explore-Plan-Act" Loop
+```
+1. Explore → Read-only tools to gather info, map dependencies
+2. Plan → Propose approach, get human approval
+3. Act → Execute with human-in-the-loop for destructive ops
+```
+
+#### Tiered Memory Architecture
+```
+System/Global  →  ~/.claude/CLAUDE.md, ~/.gemini/AGENTS.md
+Project        →  ./CLAUDE.md, ./AGENTS.md
+Session        →  HANDOFF.md, task.md, scratch files
+```
+
+#### The "Rule of Mistake"
+> If removing a line from CLAUDE.md would NOT cause the agent to make a mistake, remove it.
+>
+> — [Community best practice](https://docs.anthropic.com/en/docs/claude-code)
+
+#### Verification Gate Pattern
+```markdown
+## Before Committing
+- All tests must pass
+- No new lint warnings
+- Changes reviewed against the original plan
+- HANDOFF.md updated
+```
+
+### CLAUDE.md Structure Guide
+
+Based on analysis of 100+ real-world projects, the most effective `CLAUDE.md` follows this structure:
+
+| Section | Purpose | Size |
+|---------|---------|------|
+| **Overview** | 1-2 sentences: what this project is | 2 lines |
+| **Tech Stack** | Languages, frameworks, core libraries | 5 lines |
+| **Commands** | dev, test, build, deploy | 5-10 lines |
+| **Architecture** | Key directories and where logic lives | 10-15 lines |
+| **Rules** | Project-specific behavioral constraints | 10-20 lines |
+| **Context Links** | Pointers to docs/ for advanced topics | 5 lines |
+| **Total** | | **< 200 lines** |
+
+> 💡 **Pro tip:** Run `/init` in Claude Code to auto-generate a starter CLAUDE.md from your codebase, then refine it.
+
+### Cursor .mdc Rules Guide
+
+Modern Cursor uses `.cursor/rules/` directory with `.mdc` files:
+
+```yaml
+# .cursor/rules/coding-standards.mdc
+---
+description: "Enforce project coding standards"
+globs: ["src/**/*.ts"]
+alwaysApply: false
+---
+# Your rules here...
+```
+
+**4 Priority Levels:**
+1. **Manual** — included via `@ruleName`
+2. **Auto Attached** — triggered by `globs` match
+3. **Agent Requested** — AI picks based on context
+4. **Always** — use sparingly (`alwaysApply: true`)
 
 ---
 
